@@ -1,15 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <CogHeadquarters
+    cog-type="Sellbot"
+    xp-name="Merit"
+  />
+  <CogHeadquarters
+    cog-type="Cashbot"
+    xp-name="Cogbuck"
+  />
+  <CogHeadquarters
+    cog-type="Lawbot"
+    xp-name="Jury Notice"
+  />
+  <CogHeadquarters
+    cog-type="Bossbot"
+    xp-name="Stock Option"
+  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CogHeadquarters from './components/CogHeadquarters.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CogHeadquarters
   }
 }
 </script>
