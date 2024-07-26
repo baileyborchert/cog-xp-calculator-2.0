@@ -445,11 +445,534 @@
         ]
       },
       {
-        "name": "Robber Baron"
+        "name": "Robber Baron",
+        "levels": [
+          {
+            "xp": 1100,
+            "levels": [8, 13, 15, 20, 30, 40]
+          },
+          {
+            "xp": 1440,
+            "levels": [9, 16, 21, 31, 41]
+          },
+          {
+            "xp": 1780,
+            "levels": [10, 17, 22, 32, 42]
+          },
+          {
+            "xp": 2120,
+            "levels": [11, 18, 23, 33, 43]
+          },
+          {
+            "xp":  2460,
+            "levels": [24, 34, 44]
+          },
+          {
+            "xp":  2800,
+            "levels": [25, 35, 45]
+          },
+          {
+            "xp":  3140,
+            "levels": [26, 36, 46]
+          },
+          {
+            "xp":  3480,
+            "levels": [27, 37, 47]
+          },
+          {
+            "xp":  3820,
+            "levels": [28, 38, 48]
+          },
+          {
+            "xp": 8900,
+            "levels": [12, 14, 19, 29, 39, 49]
+          }
+        ]
       }
     ]
   },
   {
-
+    "bossName": "C.J.",
+    "cogType": "Lawbot",
+    "xpName": "Jury Notice",
+    "instances": [
+      {
+        "name": "Junior Wing",
+        "xp": 808
+      },
+      {
+        "name": "Senior Wing",
+        "xp": {
+          "min": 1900,
+          "max": 2000
+        }
+      }
+    ],
+    "cogs": [
+      {
+        "name": "Bottom Feeder",
+        "levels": [
+          {
+            "level": 1,
+            "xp": 60
+          },
+          {
+            "level": 2,
+            "xp": 80
+          },
+          {
+            "level": 3,
+            "xp": 100
+          },
+          {
+            "level": 4,
+            "xp": 120
+          },
+          {
+            "level": 5,
+            "xp": 500
+          }
+        ]
+      },
+      {
+        "name": "Bloodsucker",
+        "levels": [
+          {
+            "level": 2,
+            "xp": 100
+          },
+          {
+            "level": 3,
+            "xp": 130
+          },
+          {
+            "level": 4,
+            "xp": 160
+          },
+          {
+            "level": 5,
+            "xp": 190
+          },
+          {
+            "level": 6,
+            "xp": 800
+          }
+        ]
+      },
+      {
+        "name": "Double Talker",
+        "levels": [
+          {
+            "level": 3,
+            "xp": 160
+          },
+          {
+            "level": 4,
+            "xp": 210
+          },
+          {
+            "level": 5,
+            "xp": 260
+          },
+          {
+            "level": 6,
+            "xp": 310
+          },
+          {
+            "level": 7,
+            "xp": 1300
+          }
+        ]
+      },
+      {
+        "name": "Ambulance Chaser",
+        "levels": [
+          {
+            "level": 4,
+            "xp": 260
+          },
+          {
+            "level": 5,
+            "xp": 340
+          },
+          {
+            "level": 6,
+            "xp": 420
+          },
+          {
+            "level": 7,
+            "xp": 500
+          },
+          {
+            "level": 8,
+            "xp": 2100
+          }
+        ]
+      },
+      {
+        "name": "Back Stabber",
+        "levels": [
+          {
+            "level": 5,
+            "xp": 420
+          },
+          {
+            "level": 6,
+            "xp": 550
+          },
+          {
+            "level": 7,
+            "xp": 680
+          },
+          {
+            "level": 8,
+            "xp": 810
+          },
+          {
+            "level": 9,
+            "xp": 3400
+          }
+        ]
+      },
+      {
+        "name": "Spin Doctor",
+        "levels": [
+          {
+            "level": 6,
+            "xp": 680
+          },
+          {
+            "level": 7,
+            "xp": 890
+          },
+          {
+            "level": 8,
+            "xp": 1100
+          },
+          {
+            "level": 9,
+            "xp": 1310
+          },
+          {
+            "level": 10,
+            "xp": 5500
+          }
+        ]
+      },
+      {
+        "name": "Legal Eagle",
+        "levels": [
+          
+          {
+            "level": 7,
+            "xp": 1110
+          },
+          {
+            "level": 8,
+            "xp": 1440
+          },
+          {
+            "level": 9,
+            "xp": 1780
+          },
+          {
+            "level": 10,
+            "xp": 2120
+          },
+          {
+            "level": 11,
+            "xp": 8900
+          }
+        ]
+      },
+      {
+        "name": "Big Wig",
+        "levels": [
+          {
+            "xp": 1780,
+            "levels": [8, 13, 15, 20, 30, 40]
+          },
+          {
+            "xp": 2330,
+            "levels": [9, 16, 21, 31, 41]
+          },
+          {
+            "xp": 2880,
+            "levels": [10, 17, 22, 32, 42]
+          },
+          {
+            "xp": 3430,
+            "levels": [11, 18, 23, 33, 43]
+          },
+          {
+            "xp":  3980,
+            "levels": [24, 34, 44]
+          },
+          {
+            "xp":  4530,
+            "levels": [25, 35, 45]
+          },
+          {
+            "xp":  5080,
+            "levels": [26, 36, 46]
+          },
+          {
+            "xp":  5630,
+            "levels": [27, 37, 47]
+          },
+          {
+            "xp":  6180,
+            "levels": [28, 38, 48]
+          },
+          {
+            "xp": 14400,
+            "levels": [12, 14, 19, 29, 39, 49]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bossName": "C.E.O.",
+    "cogType": "Bossbot",
+    "xpName": "Stock Option",
+    "instances": [
+      {
+        "name": "First Fairway",
+        "xp": {
+          "min": 900,
+          "max": 951
+        }
+      },
+      {
+        "name": "Final Fringe",
+        "xp": {
+          "min": 2180,
+          "max": 2300
+        }
+      }
+    ],
+    "cogs": [
+      {
+        "name": "Flunky",
+        "levels": [
+          {
+            "level": 1,
+            "xp": 100
+          },
+          {
+            "level": 2,
+            "xp": 130
+          },
+          {
+            "level": 3,
+            "xp": 160
+          },
+          {
+            "level": 4,
+            "xp": 190
+          },
+          {
+            "level": 5,
+            "xp": 800
+          }
+        ]
+      },
+      {
+        "name": "Pencil Pusher",
+        "levels": [
+          {
+            "level": 2,
+            "xp": 160
+          },
+          {
+            "level": 3,
+            "xp": 210
+          },
+          {
+            "level": 4,
+            "xp": 260
+          },
+          {
+            "level": 5,
+            "xp": 310
+          },
+          {
+            "level": 6,
+            "xp": 1300
+          }
+        ]
+      },
+      {
+        "name": "Yesman",
+        "levels": [
+          {
+            "level": 3,
+            "xp": 260
+          },
+          {
+            "level": 4,
+            "xp": 340
+          },
+          {
+            "level": 5,
+            "xp": 420
+          },
+          {
+            "level": 6,
+            "xp": 500
+          },
+          {
+            "level": 7,
+            "xp": 2100
+          }
+        ]
+      },
+      {
+        "name": "Micromanager",
+        "levels": [
+          {
+            "level": 4,
+            "xp": 420
+          },
+          {
+            "level": 5,
+            "xp": 550
+          },
+          {
+            "level": 6,
+            "xp": 680
+          },
+          {
+            "level": 7,
+            "xp": 810
+          },
+          {
+            "level": 8,
+            "xp": 3400
+          }
+        ]
+      },
+      {
+        "name": "Downsizer",
+        "levels": [
+          {
+            "level": 5,
+            "xp": 680
+          },
+          {
+            "level": 6,
+            "xp": 890
+          },
+          {
+            "level": 7,
+            "xp": 1100
+          },
+          {
+            "level": 8,
+            "xp": 1310
+          },
+          {
+            "level": 9,
+            "xp": 5500
+          }
+        ]
+      },
+      {
+        "name": "Head Hunter",
+        "levels": [
+          {
+            "level": 6,
+            "xp": 1100
+          },
+          {
+            "level": 7,
+            "xp": 1440
+          },
+          {
+            "level": 8,
+            "xp": 1780
+          },
+          {
+            "level": 9,
+            "xp": 2120
+          },
+          {
+            "level": 10,
+            "xp": 8900
+          }
+        ]
+      },
+      {
+        "name": "Corporate Raider",
+        "levels": [
+          {
+            "level": 7,
+            "xp": 1780
+          },
+          {
+            "level": 8,
+            "xp": 2330
+          },
+          {
+            "level": 9,
+            "xp": 2880
+          },
+          {
+            "level": 10,
+            "xp": 3430
+          },
+          {
+            "level": 10,
+            "xp": 14400
+          }
+        ]
+      },
+      {
+        "name": "The Big Cheese",
+        "levels": [
+          {
+            "xp": 2880,
+            "levels": [8, 13, 15, 20, 30, 40]
+          },
+          {
+            "xp": 3770,
+            "levels": [9, 16, 21, 31, 41]
+          },
+          {
+            "xp": 4660,
+            "levels": [10, 17, 22, 32, 42]
+          },
+          {
+            "xp": 5500,
+            "levels": [11, 18, 23, 33, 43]
+          },
+          {
+            "xp":  6440,
+            "levels": [24, 34, 44]
+          },
+          {
+            "xp":  7330,
+            "levels": [25, 35, 45]
+          },
+          {
+            "xp":  8220,
+            "levels": [26, 36, 46]
+          },
+          {
+            "xp":  9110,
+            "levels": [27, 37, 47]
+          },
+          {
+            "xp":  10000,
+            "levels": [28, 38, 48]
+          },
+          {
+            "xp": 23300,
+            "levels": [12, 14, 19, 29, 39, 49]
+          }
+        ]
+      }
+    ]
   }
 ]
