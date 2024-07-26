@@ -6,14 +6,33 @@
 
     <select
       id="suit"
+      v-model="activeCogSuit"
     >
+      <option disabled value="">Please select one</option>
+
       <option
         v-for="(cog, index) in hqData.cogs"
+        :value="cog"
         :selected="index === 0"
         :key="cog.name"
         v-text="cog.name"
       />
     </select>
+    
+    <template v-if="activeCogSuit && activeCogSuit?.levels">
+      <label for="level">Choose your level:</label>
+      
+      <select
+        id="level"
+      >
+        <option
+          v-for="(level, index) in activeCogSuit.levels"
+          :selected="index === 0"
+          :key="level"
+          v-text="level.level"
+        />
+      </select>
+    </template>
   </form>
 </template>
 
@@ -25,6 +44,7 @@ export default {
 
   data() {
     return {
+      activeCogSuit: null,
       hqData: null,
     }
   },
