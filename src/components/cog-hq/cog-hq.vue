@@ -1,14 +1,44 @@
 <template>
   <h1 v-text="cogType" />
-  <h2 v-text="xpName" />
+
+  <form>
+    <label for="suit">Choose your suit:</label>
+
+    <select
+      id="suit"
+    >
+
+    </select>
+  </form>
 </template>
 
 <script>
+import cogHqJson from './cog-hq.json'
+
 export default {
-  name: 'CogHeadquarters',
+  name: 'CogHQ',
+
+  data() {
+    return {
+      hqData: null,
+    }
+  },
+
   props: {
     cogType: String,
-    xpName: String,
+  },
+
+  mounted() {
+    this.getHqData()  
+  },
+
+  methods: {
+    /**
+     * Get HQ JSON data that matches the active Cog type.
+     */
+    getHqData() {
+      this.hqData = cogHqJson.find(hq => hq.cogType === this.cogType)
+    }
   }
 }
 </script>
