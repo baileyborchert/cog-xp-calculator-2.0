@@ -12,19 +12,19 @@
     </li>
   </ul>
 
-  <CogHeadquarters
+  <CogHQ
     :cog-type="activeCogType"
   />
 </template>
 
 <script>
-import CogHeadquarters from './components/CogHeadquarters.vue'
+import CogHQ from './components/cog-hq/cog-hq.vue'
 
 export default {
   name: 'App',
 
   components: {
-    CogHeadquarters
+    CogHQ
   },
 
   data() {
