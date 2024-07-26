@@ -13,27 +13,7 @@
   </ul>
 
   <CogHeadquarters
-    v-if="activeCogType === 'Sellbot'"
-    cog-type="Sellbot"
-    xp-name="Merit"
-  />
-
-  <CogHeadquarters
-    v-if="activeCogType === 'Cashbot'"
-    cog-type="Cashbot"
-    xp-name="Cogbuck"
-  />
-
-  <CogHeadquarters
-    v-if="activeCogType === 'Lawbot'"
-    cog-type="Lawbot"
-    xp-name="Jury Notice"
-  />
-
-  <CogHeadquarters
-    v-if="activeCogType === 'Bossbot'"
-    cog-type="Bossbot"
-    xp-name="Stock Option"
+    :cog-type="activeCogType"
   />
 </template>
 
