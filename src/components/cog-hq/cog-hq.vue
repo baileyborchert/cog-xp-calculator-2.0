@@ -1,13 +1,18 @@
 <template>
   <h1 v-text="cogType" />
 
-  <form>
+  <form v-if="hqData">
     <label for="suit">Choose your suit:</label>
 
     <select
       id="suit"
     >
-
+      <option
+        v-for="(cog, index) in hqData.cogs"
+        :selected="index === 0"
+        :key="cog.name"
+        v-text="cog.name"
+      />
     </select>
   </form>
 </template>
@@ -21,6 +26,15 @@ export default {
   data() {
     return {
       hqData: null,
+    }
+  },
+
+  watch: {
+    /**
+     * On changes to Cog type, update HQ data.
+     */
+    cogType: function() {
+      this.getHqData()
     }
   },
 
