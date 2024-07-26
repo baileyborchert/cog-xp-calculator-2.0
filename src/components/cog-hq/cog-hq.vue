@@ -3,7 +3,7 @@
 
   <form v-if="hqData">
     <!-- Cog suit selection-->
-    <div>
+    <div class="form-field form-field--select">
       <label for="suit">Choose your suit:</label>
 
       <select
@@ -25,6 +25,7 @@
     <!-- Level selection -->
     <div
       v-if="activeCogSuit && activeCogSuit?.levels"
+      class="form-field form-field--select"
     >
       <label for="level">Choose your level:</label> 
 
@@ -48,8 +49,12 @@
     </div>
     
     <!-- Checkbox if has XP -->
-    <div v-if="activeCogSuit && activeCogLevel">
+    <div
+      v-if="activeCogSuit && activeCogLevel"
+      class="form-field form-field--checkbox"
+    >
       <input
+        v-model="hasXp"
         type="checkbox"
         id="hasXp"
       />
@@ -59,6 +64,31 @@
         v-text="getHasXpLabel()"
       />
     </div>
+    
+    <div
+      v-if="hasXp"
+      class="form-field form-field--number"
+    >
+    <label
+      for="currentXp"
+      v-text="getCurrentXpLabel()"
+    />
+
+      <input
+        v-model="currentXp"
+        type="number"
+        id="currentXp"
+        min="0"
+        :max="activeCogLevel.xp"
+      />
+
+    </div>
+
+    <input
+      v-if="activeCogSuit && activeCogLevel"
+      type="submit"
+      value="Submit"
+    >
   </form>
 </template>
 
@@ -72,6 +102,8 @@ export default {
     return {
       activeCogSuit: null,
       activeCogLevel: null,
+      currentXp: 0,
+      hasXp: false,
       hqData: null,
     }
   },
@@ -106,6 +138,15 @@ export default {
     },
 
     /**
+     * Get label for number input for current XP.
+     * Include XP name string based on current Cog HQ.
+     * @returns {String}
+     */
+    getCurrentXpLabel() {
+      return `How many ${this.hqData.xpName}s do you have?`
+    },
+
+    /**
      * Get HQ JSON data that matches the active Cog type.
      */
     getHqData() {
@@ -118,11 +159,24 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   form {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     flex-flow: column nowrap;
     gap: 16px;
     margin: auto;
     width: fit-content;
+  }
+
+  .form-field--checkbox {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 4px;
+  }
+
+  .form-field--select,
+  .form-field--number {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 4px;
   }
 </style>
