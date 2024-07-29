@@ -39,7 +39,7 @@
         />
 
         <option
-          v-for="(level, index) in activeCogSuit.levels"
+          v-for="(level, index) in cogLevelOptions"
           :value="level"
           :selected="index === 0"
           :key="level"
@@ -92,6 +92,8 @@
       type="submit"
       value="Submit"
     >
+
+    is top cog? {{ isTopCog }}
   </form>
 </template>
 
@@ -108,6 +110,35 @@ export default {
       currentXp: 0,
       hasXp: false,
       hqData: null,
+    }
+  },
+
+  computed: {
+    /**
+     * Compute cog level options to render.
+     * @returns {Array}
+     */
+    cogLevelOptions() {
+      if (this.isTopCog) {
+        // not empty
+      }
+
+      return this.activeCogSuit.levels
+    },
+
+    /**
+     * Compute if current Cog suit is the highest for that Cog type.
+     * @returns {Boolean}
+     */
+    isTopCog() {
+      if (!this.activeCogSuit) {
+        return false
+      }
+
+      const cogsArray = this.hqData.cogs
+      const topCog = cogsArray[cogsArray.length - 1];
+
+      return topCog === this.activeCogSuit
     }
   },
 
