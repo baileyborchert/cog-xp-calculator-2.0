@@ -47,6 +47,22 @@
         />
       </select>
     </div>
+
+    <!-- Checkbox if v2.0 -->
+    <div
+      v-if="activeCogSuit && isTopCog"
+      class="form-field form-field--checkbox"
+    >
+      <input
+        v-model="isV2"
+        type="checkbox"
+        id="isV2"
+      />
+
+      <label
+        for="isV2"
+      >v2.0</label>
+    </div>
     
     <!-- Checkbox if has XP -->
     <div
@@ -108,6 +124,7 @@ export default {
       currentXp: 0,
       hasXp: false,
       hqData: null,
+      isV2: false,
     }
   },
 
