@@ -64,7 +64,9 @@
         v-text="getHasXpLabel()"
       />
     </div>
+   
     
+    <!-- Number input for current XP -->
     <div
       v-if="hasXp"
       class="form-field form-field--number"
@@ -84,6 +86,7 @@
 
     </div>
 
+    <!-- Submit button-->
     <input
       v-if="activeCogSuit && activeCogLevel"
       type="submit"
