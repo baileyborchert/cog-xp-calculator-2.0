@@ -132,7 +132,7 @@ export default {
           levels.push(...levelsInObject)
         })
 
-        return levels
+        return levels.sort((a, b) => a.level - b.level);
       }
 
       return this.activeCogSuit.levels
