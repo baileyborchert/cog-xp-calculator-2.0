@@ -92,8 +92,6 @@
       type="submit"
       value="Submit"
     >
-
-    is top cog? {{ isTopCog }}
   </form>
 </template>
 
@@ -120,7 +118,21 @@ export default {
      */
     cogLevelOptions() {
       if (this.isTopCog) {
-        // not empty
+        let levels = []
+
+        this.activeCogSuit.levels.forEach(levelObject => {
+          const levelsInObject = levelObject.levels.map(levelNumber => {
+            return {
+              level: levelNumber,
+              xp: levelObject.xp,
+              xpV2: levelObject.xpV2
+            }
+          })
+
+          levels.push(...levelsInObject)
+        })
+
+        return levels
       }
 
       return this.activeCogSuit.levels
