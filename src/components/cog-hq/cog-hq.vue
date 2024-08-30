@@ -107,8 +107,22 @@
       v-if="activeCogSuit && activeCogLevel"
       type="submit"
       value="Submit"
+      @click="handleSubmit"
     >
   </form>
+
+  <div v-if="instancesNeeded.length > 0">
+    <span>For a promotion from {{ activeCogSuit.name }} Level {{ activeCogLevel.level }}, you need:</span>
+
+    <ul>
+      <li
+        v-for="instance in instancesNeeded"
+        :key="instance.name"
+      >
+        {{ instance.quantity }} {{ instance.name }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -124,6 +138,7 @@ export default {
       currentXp: 0,
       hasXp: false,
       hqData: null,
+      instancesNeeded: [],
       isV2: false,
     }
   },
@@ -168,6 +183,14 @@ export default {
       const topCog = cogsArray[cogsArray.length - 1];
 
       return topCog === this.activeCogSuit
+    },
+
+    /**
+     * Compute XP needed based on current Cog suit and user input for current XP.
+     * @returns {Number}
+     */
+    xpNeeded() {
+      return this.activeCogLevel.xp - this.currentXp
     }
   },
 
@@ -214,9 +237,36 @@ export default {
      */
     getHqData() {
       this.hqData = cogHqJson.find(hq => hq.cogType === this.cogType)
+    },
+
+    /**
+     * Handle submit button click.
+     */
+    handleSubmit() {
+      event.preventDefault();
+      this.calculateInstances()
+    },
+
+    /**
+     * Calculate the instance types and quantities needed.
+     */
+    calculateInstances() {
+      // const xpNeededCopy = this.xpNeeded
+      const instances = this.hqData.instances
+
+      if (this.cogType === 'Sellbot' && this.xpNeeded <= instances[0].xp) {
+        this.instancesNeeded = [
+          {
+            name: instances[0].name,
+            quantity: 1,
+          }
+        ]
+        return
+      }
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
