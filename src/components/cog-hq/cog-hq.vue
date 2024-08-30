@@ -114,7 +114,31 @@
   <div v-if="instancesNeeded.length > 0">
     <span>For a promotion from {{ activeCogSuit.name }} Level {{ activeCogLevel.level }}, you need:</span>
 
-    <ul>
+    <div v-if="hasMinAndMax">
+      <span>At least:</span>
+
+      <ul>
+        <li
+          v-for="instance in instancesNeeded[0]"
+          :key="instance.name"
+        >
+          {{ instance.quantity }} {{ instance.name }}
+        </li>
+      </ul>
+
+      <span>At most:</span>
+
+      <ul>
+        <li
+          v-for="instance in instancesNeeded[1]"
+          :key="instance.name"
+        >
+          {{ instance.quantity }} {{ instance.name }}
+        </li>
+      </ul>
+    </div>
+
+    <ul v-else>
       <li
         v-for="instance in instancesNeeded"
         :key="instance.name"
@@ -171,6 +195,18 @@ export default {
     },
 
     /**
+     * Compute if both a min and max array of instances have been calculated.
+     * @returns {Boolean}
+     */
+    hasMinAndMax() {
+      if (!this.instancesNeeded.length) {
+        return false
+      }
+
+      return Array.isArray(this.instancesNeeded[0])
+    },
+
+    /**
      * Compute if current Cog suit is the highest for that Cog type.
      * @returns {Boolean}
      */
@@ -196,12 +232,29 @@ export default {
 
   watch: {
     /**
-     * On changes to Cog type, update HQ data, and reset active suit and level.
+     * On changes to Cog type, update HQ data.
+     * Also reset active suit, active level, and instances needed.
      */
     cogType: function() {
-      this.getHqData()
+      this.setHqData()
       this.activeCogSuit = null
       this.activeCogLevel = null
+      this.instancesNeeded = []
+    },
+
+    /**
+     * On change to Cog suit, clear level and instances needed.
+     */
+    activeCogSuit: function() {
+      this.activeCogLevel = null
+      this.instancesNeeded = []
+    },
+
+    /**
+     * On change to level, clear instances needed.
+     */
+    activeCogLevel: function() {
+      this.instancesNeeded = []
     }
   },
 
@@ -210,7 +263,7 @@ export default {
   },
 
   mounted() {
-    this.getHqData()  
+    this.setHqData()  
   },
 
   methods: {
@@ -233,9 +286,9 @@ export default {
     },
 
     /**
-     * Get HQ JSON data that matches the active Cog type.
+     * Set HQ JSON data that matches the active Cog type.
      */
-    getHqData() {
+    setHqData() {
       this.hqData = cogHqJson.find(hq => hq.cogType === this.cogType)
     },
 
@@ -244,14 +297,13 @@ export default {
      */
     handleSubmit() {
       event.preventDefault();
-      this.calculateInstances()
+      this.setInstancesNeeded()
     },
 
     /**
-     * Calculate the instance types and quantities needed.
+     * Set an array of instance types and quantities needed.
      */
-    calculateInstances() {
-      // const xpNeededCopy = this.xpNeeded
+    setInstancesNeeded() {
       const instances = this.hqData.instances
 
       if (this.cogType === 'Sellbot' && this.xpNeeded <= instances[0].xp) {
@@ -263,6 +315,74 @@ export default {
         ]
         return
       }
+
+      const min = this.calculateInstances('min')
+      const max = this.calculateInstances('max')
+
+      if (this.minEqualsMax(min, max)) {
+        this.instancesNeeded = min
+        return
+      }
+
+      this.instancesNeeded = [[...min], [...max]]
+    },
+
+    /**
+     * Calculate instances needed to return an array of instance objects with name and quantity.
+     * @param {String} minOrMax - Whether we're calculating the min or max needed.
+     * @returns {Array}
+     */
+    calculateInstances(minOrMax) {
+      let xpNeededCopy = this.xpNeeded
+      let instances = []
+
+      this.hqData.instances.reverse().forEach(instance => {
+        const isConsistentXp = typeof instance.xp === 'number'
+        let quantity = 0
+
+        if (isConsistentXp) {
+          while (xpNeededCopy >= instance.xp) {
+            quantity += 1
+            xpNeededCopy -= instance.xp
+          }
+
+          if (quantity > 0) {
+            instances.push({
+              name: instance.name,
+              quantity,
+            })
+          }
+        } else {
+          while (xpNeededCopy >= instance.xp[minOrMax]) {
+            quantity += 1
+            xpNeededCopy -= instance.xp[minOrMax]
+          }
+
+          if (quantity > 0) {
+            instances.push({
+              name: instance.name,
+              quantity,
+            })
+          }
+        }
+      })
+
+      return instances
+    },
+
+    /**
+     * Check if min and max instances needed arrays are equal.
+     * @param {Array} min - Minimum instances needed
+     * @param {Array} max - Maximum instances needed
+     * @returns {Boolean}
+     */
+    minEqualsMax(min, max) {
+      if (min.length !== max.length) return false;
+
+      return min.every((obj1, index) => {
+        const obj2 = max[index]
+        return JSON.stringify(obj1) === JSON.stringify(obj2)
+      })
     }
   }
 }
