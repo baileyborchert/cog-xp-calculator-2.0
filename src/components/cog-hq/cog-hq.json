@@ -518,7 +518,10 @@
     "instances": [
       {
         "name": "Junior Wing",
-        "xp": 808
+        "xp": {
+          "min": 781,
+          "max": 922
+        }
       },
       {
         "name": "Senior Wing",
